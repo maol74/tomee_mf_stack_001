@@ -9,139 +9,153 @@
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.superbiz</groupId>
-    <artifactId>myfaces-stack001</artifactId>
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.superbiz</groupId>
+	<artifactId>myfaces-stack001</artifactId>
 
-    <name>OpenEJB :: Examples :: JSF2/CDI/BV/JPA/CODI</name>
-    <version>1.0.0</version>
+	<name>OpenEJB :: Examples :: JSF2/CDI/BV/JPA/CODI</name>
+	<version>1.0.0</version>
 
-    <packaging>war</packaging>  
+	<packaging>war</packaging>
 
-    <properties>
-        <myfaces2.version>2.1.12</myfaces2.version>
-        <myfaces.codi.version>1.0.5</myfaces.codi.version>
-        <extval.version>2.0.7</extval.version>
+	<properties>
+		<myfaces2.version>2.1.12</myfaces2.version>
+		<myfaces.codi.version>1.0.5</myfaces.codi.version>
+		<extval.version>2.0.7</extval.version>
 		<primafaces.version>3.5.11-UR</primafaces.version>
-    </properties>
+	</properties>
 
-    <build>
-        <defaultGoal>install</defaultGoal>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.openejb.maven</groupId>
-                <artifactId>tomee-maven-plugin</artifactId>
-                <version>1.5.2</version>
-            </plugin>
-        </plugins>
-    </build>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.openejb.maven</groupId>
+				<artifactId>tomee-maven-plugin</artifactId>
+				<version>1.5.2</version>
+				<configuration>
+					<synchronization>
+						<extensions>
+							<extension>.class____</extension>
+						</extensions>
+						<updateInterval>2</updateInterval>
+						<updateOnlyExtensions>
+							<updateOnlyExtension>.xhtml</updateOnlyExtension>
+							<updateOnlyExtension>.js</updateOnlyExtension>
+							<updateOnlyExtension>.css</updateOnlyExtension>
+						</updateOnlyExtensions>
+					</synchronization>
+					<reloadOnUpdate>false</reloadOnUpdate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<pluginRepositories>
-	<pluginRepository>
-	<id>m-repo</id>
-	<url>http://repo1.maven.org/maven2/</url>
-	</pluginRepository>
+		<pluginRepository>
+			<id>m-repo</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</pluginRepository>
 	</pluginRepositories>
-	    <repositories>
-        <repository>
-            <id>prime-repo</id>
-            <name>Prime Technology Maven Repository</name>
-            <url>http://repository.primefaces.org/</url>
-            <layout>default</layout>
-        </repository>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>Prime Technology Maven Repository</name>
+			<url>http://repository.primefaces.org/</url>
+			<layout>default</layout>
+		</repository>
 
-	<repository>
-	  <id>prime-github-repo</id>
-	  <name>Unofficial PrimeFaces Maven Repository</name>
-	  <url>http://primefaces.github.io/repository</url>
-	  <layout>default</layout>
-	</repository>
+		<repository>
+			<id>prime-github-repo</id>
+			<name>Unofficial PrimeFaces Maven Repository</name>
+			<url>http://primefaces.github.io/repository</url>
+			<layout>default</layout>
+		</repository>
 
-        <repository>
-            <id>extra-repo</id>
-            <name>Extra repo</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>6.0-4</version>
-            <scope>provided</scope>
-        </dependency>
+		<repository>
+			<id>extra-repo</id>
+			<name>Extra repo</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0-4</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.bundles</groupId>
-            <artifactId>myfaces-extcdi-bundle-jsf20</artifactId>
-            <version>${myfaces.codi.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.extensions.cdi.bundles</groupId>
+			<artifactId>myfaces-extcdi-bundle-jsf20</artifactId>
+			<version>${myfaces.codi.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.validator</groupId>
-            <artifactId>myfaces-extval-core</artifactId>
-            <version>${extval.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.extensions.validator</groupId>
+			<artifactId>myfaces-extval-core</artifactId>
+			<version>${extval.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
-            <artifactId>myfaces-extval-property-validation</artifactId>
-            <version>${extval.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.persistence</groupId>
-                    <artifactId>persistence-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
+			<artifactId>myfaces-extval-property-validation</artifactId>
+			<version>${extval.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.persistence</groupId>
+					<artifactId>persistence-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
-            <artifactId>myfaces-extval-bean-validation</artifactId>
-            <version>${extval.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.extensions.validator.validation-modules</groupId>
+			<artifactId>myfaces-extval-bean-validation</artifactId>
+			<version>${extval.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.validation</groupId>
+					<artifactId>validation-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.myfaces.core</groupId>
-            <artifactId>myfaces-api</artifactId>
-            <version>${myfaces2.version}</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>${myfaces2.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <!-- 3rd party libs -->
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>${primafaces.version}</version>
-        </dependency>
-    </dependencies>
+		<!-- 3rd party libs -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primafaces.version}</version>
+		</dependency>
+	</dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>localhost</id>
-            <url>file://${basedir}/target/repo/</url>
-        </repository>
-        <snapshotRepository>
-            <id>localhost</id>
-            <url>file://${basedir}/target/snapshot-repo/</url>
-        </snapshotRepository>
-    </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<id>localhost</id>
+			<url>file://${basedir}/target/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>localhost</id>
+			<url>file://${basedir}/target/snapshot-repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
 
