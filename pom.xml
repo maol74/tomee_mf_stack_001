@@ -17,12 +17,13 @@
     <name>OpenEJB :: Examples :: JSF2/CDI/BV/JPA/CODI</name>
     <version>1.0.0</version>
 
-    <packaging>war</packaging>
+    <packaging>war</packaging>  
 
     <properties>
-        <myfaces2.version>2.1.11</myfaces2.version>
+        <myfaces2.version>2.1.12</myfaces2.version>
         <myfaces.codi.version>1.0.5</myfaces.codi.version>
         <extval.version>2.0.7</extval.version>
+		<primafaces.version>3.5.11-UR</primafaces.version>
     </properties>
 
     <build>
@@ -44,11 +45,31 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
+	<pluginRepositories>
+	<pluginRepository>
+	<id>m-repo</id>
+	<url>http://repo1.maven.org/maven2/</url>
+	</pluginRepository>
+	</pluginRepositories>
+	    <repositories>
         <repository>
             <id>prime-repo</id>
             <name>Prime Technology Maven Repository</name>
             <url>http://repository.primefaces.org/</url>
+            <layout>default</layout>
+        </repository>
+
+	<repository>
+	  <id>prime-github-repo</id>
+	  <name>Unofficial PrimeFaces Maven Repository</name>
+	  <url>http://primefaces.github.io/repository</url>
+	  <layout>default</layout>
+	</repository>
+
+        <repository>
+            <id>extra-repo</id>
+            <name>Extra repo</name>
+            <url>http://repo1.maven.org/maven2/</url>
             <layout>default</layout>
         </repository>
     </repositories>
@@ -107,15 +128,10 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>2.2</version>
+            <version>${primafaces.version}</version>
         </dependency>
     </dependencies>
 
-    <!--
-    This section allows you to configure where to publish libraries for sharing.
-    It is not required and may be deleted.  For more information see:
-    http://maven.apache.org/plugins/maven-deploy-plugin/
-    -->
     <distributionManagement>
         <repository>
             <id>localhost</id>

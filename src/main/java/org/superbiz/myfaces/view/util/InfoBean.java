@@ -27,6 +27,7 @@ import org.apache.myfaces.extensions.cdi.jsf.api.config.view.ViewConfigDescripto
 import org.apache.myfaces.extensions.cdi.jsf.api.config.view.ViewConfigResolver;
 import org.apache.myfaces.extensions.cdi.message.api.MessageContext;
 import org.apache.myfaces.extensions.validator.ExtValInformation;
+import org.primefaces.component.datatable.DataTableRenderer;
 import org.superbiz.myfaces.view.InfoPage;
 
 import javax.annotation.PostConstruct;
@@ -61,6 +62,7 @@ public class InfoBean implements Serializable
     private String beanValidationVersion;
 
     private String jpaVersion;
+    private String primeVersion;
 
     @PostConstruct
     protected void showWelcomeMessage()
@@ -77,6 +79,14 @@ public class InfoBean implements Serializable
 
         this.jpaVersion =
                 ClassUtils.getJarVersion(Persistence.createEntityManagerFactory("demoApplicationPU").getClass());
+
+		String classFilePath = DataTableRenderer.class.getCanonicalName().replace('.', '/') + ".class";
+		String manifestFilePath = "/META-INF/MANIFEST.MF";
+
+		String classLocation = DataTableRenderer.class.getResource(DataTableRenderer.class.getSimpleName() + ".class").toString();
+		String s = classLocation.substring(0, classLocation.indexOf(classFilePath) - 1) + manifestFilePath;
+
+		primeVersion = s.substring(s.indexOf("primefaces-"), s.indexOf(".jar!"));
 
         if (!ProjectStage.IntegrationTest.equals(this.projectStage))
         {
@@ -136,4 +146,8 @@ public class InfoBean implements Serializable
     {
         return this.jpaVersion;
     }
+
+	public String getPrimeVersion() {
+		return primeVersion;
+	}
 }
